@@ -3,6 +3,8 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Symfony\Component\HttpFoundation\Response;
 
 class Authenticate extends Middleware
 {
@@ -16,7 +18,7 @@ class Authenticate extends Middleware
     {
         if($request->is('api/*'))
         {
-            return responder()->error(401, 'Unauthorised');
+            throw new HttpResponseException(response()->json(['error' => 'Unauthorised'], Response::HTTP_UNAUTHORIZED));
         }
 
     }

@@ -26,7 +26,6 @@ class CharactersController extends Controller
     /**
      * Display a random resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function random()
@@ -44,28 +43,5 @@ class CharactersController extends Controller
     public function show(Character $character)
     {
         return responder()->success($character->load('episodes:id', 'quotes:id'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
